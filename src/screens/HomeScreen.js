@@ -9,6 +9,7 @@ export default class HomeScreen extends Component {
     return (
       <View>
         <StatusBarComponent />
+        <HomeScreenHeader />
       </View>
     );
   }

@@ -8,7 +8,7 @@ export default class HomeScreenHeader extends Component {
       <View style={style.header}>
         <TouchableOpacity>
           <Image
-            source={require("../../assets/avatar.png")}
+            source={require("../../../assets/avatar.jpg")}
             style={style.profilePic}
           />
         </TouchableOpacity>
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginVertical: 10,
-    marginHorizontal: 20
+    marginHorizontal: 10
   },
   profilePic: {
     height: 32,

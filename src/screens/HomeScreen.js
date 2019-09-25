@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { SearchBar } from "react-native-elements";
 import StatusBarComponent from "../component/StatusBarComponent";
-import HomeScreenHeader from "../component/HomeScreenHeader";
+import HomeScreenHeader from "../component/headers/HomeScreen";
 import faker from "faker";
 
 export default class HomeScreen extends Component {
@@ -21,6 +21,10 @@ export default class HomeScreen extends Component {
 
   updateSearch = search => {
     this.setState({ search });
+  };
+
+  handleChatPress = ({ name, avatar }) => {
+    this.props.navigation.navigate("Chat", { name, avatar });
   };
 
   componentWillMount = () => {
@@ -58,9 +62,9 @@ export default class HomeScreen extends Component {
               renderItem={({ item }) => (
                 <TouchableOpacity style={style.story}>
                   <Image style={style.image} source={{ uri: item.avatar }} />
-                  <Text>
+                  <Text style={{ textAlign: "center" }}>
                     {item.name.length > 10
-                      ? item.name.substring(0, 8) + "..."
+                      ? item.name.substring(0, 6) + "..."
                       : item.name}
                   </Text>
                 </TouchableOpacity>
@@ -74,11 +78,16 @@ export default class HomeScreen extends Component {
               data={this.state.stories}
               keyExtractor={item => item.name}
               renderItem={({ item }) => (
-                <TouchableOpacity style={style.chat}>
-                  <Image
-                    style={style.chatImage}
-                    source={{ uri: item.avatar }}
-                  />
+                <TouchableOpacity
+                  style={style.chat}
+                  onPress={() => this.handleChatPress(item)}
+                >
+                  <TouchableOpacity>
+                    <Image
+                      style={style.chatImage}
+                      source={{ uri: item.avatar }}
+                    />
+                  </TouchableOpacity>
                   <View style={style.chatDetails}>
                     <View>
                       <Text style={style.chatHeader}>{item.name}</Text>
@@ -100,7 +109,6 @@ export default class HomeScreen extends Component {
 
 const style = StyleSheet.create({
   searchBarContainer: {
-    marginHorizontal: 10,
     backgroundColor: "#fff",
     borderWidth: 0,
     borderBottomColor: "transparent",
@@ -117,11 +125,11 @@ const style = StyleSheet.create({
     marginVertical: 5
   },
   stories: {
-    marginLeft: 20
+    marginLeft: 10
   },
   story: {
     margin: 5,
-    width: 70,
+    width: 60,
     overflow: "hidden"
   },
   image: {
@@ -130,7 +138,7 @@ const style = StyleSheet.create({
     borderRadius: 30
   },
   chatList: {
-    marginHorizontal: 20
+    marginHorizontal: 10
   },
   chat: {
     display: "flex",
@@ -144,7 +152,7 @@ const style = StyleSheet.create({
   },
   chatDetails: {
     flexGrow: 1,
-    marginLeft: 15,
+    marginLeft: 5,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between"

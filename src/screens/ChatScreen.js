@@ -80,8 +80,10 @@ export default class ChatScreen extends Component {
                   <View
                     style={item.message.length < 35 ? style.smallMsg : null}
                   >
-                    <Text>{item.message}</Text>
-                    <Text style={style.time}>{item.time}</Text>
+                    <Text style={{ color: "white" }}>{item.message}</Text>
+                    <Text style={{ ...style.time, color: "white" }}>
+                      {item.time}
+                    </Text>
                   </View>
                 </View>
               );
@@ -123,7 +125,7 @@ const style = StyleSheet.create({
   },
   sentMsg: {
     borderRadius: 10,
-    backgroundColor: "aqua",
+    backgroundColor: "#1565C0",
     maxWidth: "70%",
     padding: 5,
     alignSelf: "flex-end",
@@ -162,6 +164,7 @@ const style = StyleSheet.create({
   },
   sendIcon: {
     marginVertical: 5,
-    marginHorizontal: 10
+    marginHorizontal: 10,
+    color: "#1565C0"
   }
 });

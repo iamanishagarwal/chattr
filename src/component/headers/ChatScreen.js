@@ -11,29 +11,51 @@ export default class ChatScreenHeader extends Component {
             style={{ display: "flex", flexDirection: "row" }}
             onPress={() => this.props.navigation.goBack()}
           >
-            <Ionicons style={style.backIcon} size={28} name="ios-arrow-back" />
+            <Ionicons
+              style={style.backIcon}
+              size={28}
+              name="ios-arrow-back"
+              color="#1565C0"
+            />
             <Image
               source={{ uri: this.props.user.avatar }}
               style={style.profilePic}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              this.props.navigation.navigate("Profile", {
+                user: this.props.user
+              })
+            }
+          >
             <Text style={style.name}>{this.props.user.name}</Text>
             <Text style={style.lastSeen}>last seen today at 9:42pm</Text>
           </TouchableOpacity>
         </View>
         <View style={{ display: "flex", flexDirection: "row" }}>
           <TouchableOpacity>
-            <Ionicons style={style.callIcon} size={28} name="ios-call" />
+            <Ionicons
+              style={style.callIcon}
+              size={28}
+              name="ios-call"
+              color="#1565C0"
+            />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Ionicons style={style.icon} size={28} name="ios-videocam" />
+            <Ionicons
+              style={style.icon}
+              size={28}
+              name="ios-videocam"
+              color="#1565C0"
+            />
           </TouchableOpacity>
           <TouchableOpacity>
             <SimpleLineIcons
               style={style.icon}
               size={28}
               name="options-vertical"
+              color="#1565C0"
             />
           </TouchableOpacity>
         </View>

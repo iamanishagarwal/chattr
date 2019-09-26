@@ -18,7 +18,8 @@ export default class ChatScreenHeader extends Component {
             />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={style.text}>{this.props.user.name}</Text>
+            <Text style={style.name}>{this.props.user.name}</Text>
+            <Text style={style.lastSeen}>last seen today at 9:42pm</Text>
           </TouchableOpacity>
         </View>
         <View style={{ display: "flex", flexDirection: "row" }}>
@@ -49,7 +50,7 @@ const style = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 15,
     paddingHorizontal: 5,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: "#eeeeee"
   },
   backIcon: {
@@ -62,10 +63,14 @@ const style = StyleSheet.create({
     borderRadius: 15,
     marginHorizontal: 10
   },
-  text: {
-    textAlign: "center",
+  name: {
     fontSize: 18,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    lineHeight: 18
+  },
+  lastSeen: {
+    fontSize: 12,
+    color: "grey"
   },
   callIcon: {
     marginHorizontal: 15

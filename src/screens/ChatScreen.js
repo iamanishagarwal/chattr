@@ -17,7 +17,7 @@ export default class ChatScreen extends Component {
     super(props);
 
     let messages = [];
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 10; i++) {
       let key = i.toString();
       let id = i % 2 == 0 ? 1 : 0;
       let message =
@@ -28,23 +28,23 @@ export default class ChatScreen extends Component {
     this.state = { messages, value: "" };
   }
 
-  onChangeValue = value => {
-    this.setState({ value: value });
-  };
+  onChangeValue = value => this.setState({ value });
 
   handleSubmit = () => {
-    const msg = {
-      id: 0,
-      key: this.state.messages.length.toString(),
-      message: this.state.value,
-      time: `12:12`
-    };
+    if (this.state.value.length) {
+      const msg = {
+        id: 0,
+        key: this.state.messages.length.toString(),
+        message: this.state.value,
+        time: `12:12`
+      };
 
-    let { messages } = this.state;
-    messages.unshift(msg);
-
-    this.setState({ messages, value: "" });
-    console.log("yo yo");
+      this.setState(state => {
+        state.messages.unshift(msg);
+        state.value = "";
+        return state;
+      });
+    }
   };
 
   render() {
@@ -61,6 +61,7 @@ export default class ChatScreen extends Component {
           style={style.messageContainer}
           data={this.state.messages}
           keyExtractor={item => item.key}
+          extraData={this.state}
           renderItem={({ item }) => {
             if (item.id) {
               return (

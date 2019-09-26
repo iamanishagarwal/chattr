@@ -82,7 +82,11 @@ export default class HomeScreen extends Component {
                   style={style.chat}
                   onPress={() => this.handleChatPress(item)}
                 >
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate("Profile", { user: item })
+                    }
+                  >
                     <Image
                       style={style.chatImage}
                       source={{ uri: item.avatar }}

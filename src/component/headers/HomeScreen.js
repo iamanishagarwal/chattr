@@ -13,7 +13,9 @@ export default class HomeScreenHeader extends Component {
           />
         </TouchableOpacity>
         <Text style={style.text}>Chattr</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Contact")}
+        >
           <Ionicons style={style.callIcon} size={32} name="md-call" />
         </TouchableOpacity>
       </View>

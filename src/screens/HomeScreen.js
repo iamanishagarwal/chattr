@@ -42,7 +42,7 @@ export default class HomeScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <StatusBarComponent />
-        <HomeScreenHeader />
+        <HomeScreenHeader navigation={this.props.navigation} />
         <SearchBar
           containerStyle={style.searchBarContainer}
           inputContainerStyle={style.searchBar}

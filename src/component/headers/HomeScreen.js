@@ -6,7 +6,9 @@ export default class HomeScreenHeader extends Component {
   render() {
     return (
       <View style={style.header}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Setting")}
+        >
           <Image
             source={require("../../../assets/avatar.jpg")}
             style={style.profilePic}

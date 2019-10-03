@@ -22,7 +22,7 @@ const navigator = createStackNavigator(
     ProfileSetup: ProfileSetupScreen
   },
   {
-    initialRouteName: "Otp",
+    initialRouteName: "Login",
     headerMode: "none"
   }
 );

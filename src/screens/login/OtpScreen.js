@@ -6,8 +6,7 @@ import {
   View,
   Image,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Vibration
+  KeyboardAvoidingView
 } from "react-native";
 import { Input } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
@@ -41,7 +40,6 @@ export default class OtpScreen extends Component {
         break;
       }
     }
-    console.log(this.state.isDisabled);
   };
 
   render() {
@@ -107,10 +105,13 @@ export default class OtpScreen extends Component {
             </View>
             <View style={style.footer}>
               <Text style={style.footerText}>Didn't receive the code? </Text>
-              <TouchableOpacity style={style.resendButton}>
-                <Text style={style.resendButton}>Resend Code.</Text>
+              <TouchableOpacity>
+                <Text style={style.button}>Resend Code.</Text>
               </TouchableOpacity>
             </View>
+            <TouchableOpacity>
+              <Text style={style.button}>Wrong Number?</Text>
+            </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
         <TouchableOpacity
@@ -167,6 +168,7 @@ const style = StyleSheet.create({
   },
   footer: {
     marginTop: 20,
+    marginBottom: 10,
     flexDirection: "row",
     justifyContent: "center"
   },
@@ -176,10 +178,11 @@ const style = StyleSheet.create({
     fontWeight: "500",
     color: "grey"
   },
-  resendButton: {
+  button: {
     fontSize: 18,
     fontWeight: "500",
-    color: "blue"
+    color: "#1666ff",
+    textAlign: "center"
   },
   nextBtn: {
     width: 50,

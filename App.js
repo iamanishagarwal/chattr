@@ -25,7 +25,7 @@ const navigator = createStackNavigator(
     ProfileSetup: ProfileSetupScreen
   },
   {
-    initialRouteName: "Setting",
+    initialRouteName: "Home",
     headerMode: "none"
   }
 );
